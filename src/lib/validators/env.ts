@@ -50,6 +50,12 @@ function validateEnv() {
   const result = envSchema.safeParse(sanitizedEnv);
 
   if (!result.success) {
+    // During Next.js build compilation phase, bypass throwing validation errors
+    // so that static pages build successfully without requiring production keys in the build logs
+    if (process.env.NEXT_PHASE === 'phase-production-build') {
+      return (result.data || sanitizedEnv) as unknown as Env;
+    }
+
     const formatted = result.error.issues
       .map((issue) => `  • ${issue.path.join('.')}: ${issue.message}`)
       .join('\n');
