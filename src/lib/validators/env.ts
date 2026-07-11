@@ -3,7 +3,7 @@ import { z } from 'zod';
 const envSchema = z.object({
   /* ── AI / LLM ── */
   GEMINI_API_KEY: z.string().min(1, 'GEMINI_API_KEY is required'),
-  GEMINI_MODEL_NAME: z.string().min(1, 'GEMINI_MODEL_NAME is required'),
+  GEMINI_MODEL_NAME: z.string().min(1).default('gemini-2.0-flash'),
 
   /* ── LangSmith (optional in development) ── */
   LANGCHAIN_TRACING_V2: z.enum(['true', 'false']).optional(),
@@ -14,11 +14,11 @@ const envSchema = z.object({
   YAHOO_FINANCE_API_KEY: z.string().optional().default(''),
   YAHOO_FINANCE_BASE_URL: z.string().url('YAHOO_FINANCE_BASE_URL must be a valid URL').optional().default('https://query1.finance.yahoo.com'),
   NEWS_API_KEY: z.string().min(1, 'NEWS_API_KEY is required'),
-  NEWS_API_BASE_URL: z.string().url('NEWS_API_BASE_URL must be a valid URL'),
+  NEWS_API_BASE_URL: z.string().url().optional().default('https://newsapi.org/v2'),
 
   /* ── App Config ── */
-  NEXT_PUBLIC_APP_URL: z.string().url('NEXT_PUBLIC_APP_URL must be a valid URL'),
-  NEXT_PUBLIC_APP_NAME: z.string().min(1, 'NEXT_PUBLIC_APP_NAME is required'),
+  NEXT_PUBLIC_APP_URL: z.string().url().optional().default('http://localhost:3000'),
+  NEXT_PUBLIC_APP_NAME: z.string().min(1).optional().default('InvestIQ'),
   NEXT_PUBLIC_ENABLE_CHAT: z.enum(['true', 'false']).default('false'),
 
   /* ── Rate Limiting ── */
