@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 4.5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 210 100% 50%; /* Modern Blue Accent */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 263.4 70% 50.4%; /* Purple Accent */
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 355.7 100% 47.3%; /* Red Danger */
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Investment recommendations colors */
+    --invest: 142.1 76.2% 36.3%; /* Emerald Success */
+    --invest-foreground: 0 0% 98%;
+    --hold: 47.9 95.8% 51.8%; /* Amber Warning */
+    --hold-foreground: 26 83.3% 14.1%;
+    --pass: 355.7 100% 47.3%; /* Red Pass */
+    --pass-foreground: 0 0% 98%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 10% 4.5%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 12%;
+    --muted-foreground: 240 5% 65%;
+
+    --accent: 263.4 70% 50.4%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 355.7 100% 47.3%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 210 100% 50%;
+
+    --invest: 142.1 76.2% 36.3%;
+    --invest-foreground: 0 0% 98%;
+    --hold: 47.9 95.8% 51.8%;
+    --hold-foreground: 26 83.3% 14.1%;
+    --pass: 355.7 100% 47.3%;
+    --pass-foreground: 0 0% 98%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-[#030303] text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom styles for animations */
+.glow-blur {
+  filter: blur(120px);
+}
+
+.glow-purple {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.glow-blue {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* Glassmorphism card utilities */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.glass-panel-hover:hover {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 15, 15, 0.7);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-input {
+  background: rgba(12, 12, 12, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.glass-input:focus {
+  border-color: rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 1px rgba(59, 130, 246, 0.2);
+  background: rgba(16, 16, 16, 0.6);
+}
