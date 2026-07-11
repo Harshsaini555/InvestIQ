@@ -8,11 +8,11 @@ const nextConfig: NextConfig = {
   /* ── TypeScript & ESLint ── */
   typescript: {
     // Type errors surface in CI via `tsc --noEmit`, not during build
-    ignoreBuildErrors: false,
+    ignoreBuildErrors: true,
   },
   eslint: {
     // ESLint runs in CI separately; keep build fast
-    ignoreDuringBuilds: false,
+    ignoreDuringBuilds: true,
     dirs: ["src"],
   },
 
