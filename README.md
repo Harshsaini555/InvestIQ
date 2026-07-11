@@ -1,5 +1,6 @@
 # InvestIQ — AI Investment Research Agent
 
+Live Link = https://invest-iq-mu-orcin.vercel.app/
 An institutional-grade, automated equity research platform. InvestIQ orchestrates a multi-stage sequential data pipeline using **LangGraph**, aggregates real-time market data via **Yahoo Finance** and **News API**, and generates verified financial analysis reports using **Gemini** under strict Zod validation schemas.
 
 ---
