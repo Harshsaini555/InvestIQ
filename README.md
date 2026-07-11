@@ -35,34 +35,38 @@ An institutional-grade, automated equity research platform. This system orchestr
 
 ```mermaid
 graph TD
-    A[Frontend Search] -->|POST /api/research| B[API Middleware Wrapper]
-    B -->|State Init| C[LangGraph Research Pipeline]
+    A[User Query 'Apple'] -->|GET /api/company/search?q=Apple| B[Autocomplete API]
+    B -->|Fuzzy Levenshtein Match| C[Suggestions List Dropdown]
+    C -->|Auto-select/Click Top Match| D[Company Preview Card]
+    D -->|Click Start AI Research: Ticker AAPL| E[POST /api/research]
+    E -->|resolveCompany Interceptor| F[Resolved Ticker AAPL]
+    F -->|State Init| G[LangGraph Pipeline]
     
     subgraph LangGraph Orchestration Layer
-        C --> D[Validation Node]
-        D --> E[Profile Node]
-        E --> F[Financials Node]
-        F --> G[News Node]
-        G --> H[Competitors Node]
-        H --> I[Market Intelligence Node]
-        I --> J[Aggregation Node]
-        J --> K[Integrity Verification Node]
+        G --> H[validate_input Node]
+        H --> I[company_profile Node]
+        I --> J[financials Node]
+        J --> K[fetch_news Node]
+        K --> L[fetch_competitors Node]
+        L --> M[market_intelligence Node]
+        M --> N[aggregate Node]
+        N --> O[validate_bundle Node]
     end
     
-    K -->|ResearchBundle| L[AI Investment Intelligence Engine]
+    O -->|ResearchBundle| P[AI Investment Intelligence Engine]
     
     subgraph Gemini Reasoning Engine
-        L -->|Prompt Compiler| M[Gemini 1.5 Pro]
-        M -->|Response JSON| N[Zod Schema Parser]
-        N -->|Parse Error| O{Retry Logic < 2?}
-        O -->|Yes: Feed Error| M
-        O -->|No| P[Error Boundary]
-        N -->|Success| Q[Analytical Guardrails]
+        P -->|Prompt Compiler| Q[Gemini 1.5 Pro]
+        Q -->|Response JSON| R[Zod Schema Parser]
+        R -->|Parse Error| S{Retry Logic < 2?}
+        S -->|Yes: Feed Error| Q
+        S -->|No| T[Error Boundary]
+        R -->|Success| U[Analytical Guardrails]
     end
     
-    Q -->|InvestmentAnalysis| R[Interactive Dashboard]
-    R -->|Chat Query| S[POST /api/chat]
-    S -->|Streamed Response| T[AI Co-Pilot Panel]
+    U -->|InvestmentAnalysis| V[Interactive Dashboard]
+    V -->|Chat Query| W[POST /api/chat]
+    W -->|Streamed Response| X[AI Co-Pilot Panel]
 ```
 
 ---
@@ -149,3 +153,35 @@ To ensure production-grade reliability, Gemini models are governed by strict con
 - **Corrective Feedback Loops**: On schemas mismatch, the engine feeds back the exact Zod errors to the model for automatic self-correction.
 - **Confidence Penalty**: Evaluates if competitor data, news indexes, or profile details are missing, and automatically deducts confidence points.
 - **Verdict Alignment**: Blocks contradictory outputs (e.g. recommendation is "Strong Buy" but financial score is 30).
+
+---
+
+## 7. Documentation Map
+
+The project contains a comprehensive documentation layer inside the `docs/` folder, structured as follows:
+
+### Core Documentation (`docs/`)
+- **[architecture.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/architecture.md)**: Details the visual architecture, middleware layer, model parameters, and execution state parameters.
+- **[design-system.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/design-system.md)**: Outlines typography, glassmorphism CSS components, animations (Framer Motion), charts (Recharts), and CSS variables.
+- **[engineering-decisions.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/engineering-decisions.md)**: Rationalizes technical choices (e.g. Next.js App Router, LangGraph, Vitest, TanStack Query) and folder layouts.
+- **[prompt-engineering.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/prompt-engineering.md)**: Highlights Gemini system prompts, context aggregation templates, schema formatting rules, and retry parameters.
+- **[demo-script.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/demo-script.md)**: Provide step-by-step guidance to test private company warnings, ambiguous listings, and research dashboards.
+- **[submission-checklist.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/submission-checklist.md)**: Tracks checklist validation coverage.
+
+### Component Architectures (`docs/architecture/`)
+- **[langgraph.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/architecture/langgraph.md)**: Details the sequential transition edges and state annotation keys of the graph.
+- **[api-flow.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/architecture/api-flow.md)**: Details route layouts, middlewares, response formatters, and status codes.
+- **[investment-engine.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/architecture/investment-engine.md)**: Explains retry loops, Zod parsers, and guardrail validations.
+
+### Phase Logs (`docs/ai-development-journal/`)
+- **[master.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/ai-development-journal/master.md)**: Master timeline index linking daily log logs.
+- **[phase-01-project-foundation.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/ai-development-journal/phase-01-project-foundation.md)**: Deep dive into project folder setup, tsconfig setup, initial layout adapters, and package constraints.
+- **[phase-04.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/ai-development-journal/phase-04.md)** to **[phase-07.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/ai-development-journal/phase-07.md)**: Phase summary notes outlining node constructs, API layers, AI prompts, and component rendering.
+
+### Chat Transcripts (`docs/chat-transcripts/`)
+- **[phase-01-to-final.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/chat-transcripts/phase-01-to-final.md)**: Core chronological prompt logs tracing developer prompt iterations and agent debug phases from foundation setup to completion.
+- **[phase-04-summary.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/chat-transcripts/phase-04-summary.md)** to **[phase-07-summary.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/chat-transcripts/phase-07-summary.md)**: Chat brief transcripts outlining prompt logic and accomplishments across individual project milestones.
+
+### Interview Guides (`docs/interview/`)
+- **[complete-interview-guide.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/interview/complete-interview-guide.md)**: The ultimate reference compilation of anticipated system questions, detailed design decisions, architecture Q&As, and validation logic prepared for project presentation defense.
+- **[phase-04.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/interview/phase-04.md)** to **[phase-07.md](file:///c:/Users/hp/Desktop/insideIIM-project/docs/interview/phase-07.md)**: Phase-specific interactive briefing notes mapping rationale, Zod retries, schema constraints, and visual component designs.
