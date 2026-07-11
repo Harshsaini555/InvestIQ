@@ -3,7 +3,7 @@ import { z } from 'zod';
 const envSchema = z.object({
   /* ── AI / LLM ── */
   GEMINI_API_KEY: z.string().min(1, 'GEMINI_API_KEY is required'),
-  GEMINI_MODEL_NAME: z.string().min(1).default('gemini-2.0-flash'),
+  GEMINI_MODEL_NAME: z.string().min(1).default('gemini-2.0-flash-001'),
 
   /* ── LangSmith (optional in development) ── */
   LANGCHAIN_TRACING_V2: z.enum(['true', 'false']).optional(),
