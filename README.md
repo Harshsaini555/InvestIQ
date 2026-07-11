@@ -214,12 +214,3 @@ Gemini is governed by strict controls to ensure production-grade reliability:
 | [Session: Phase 06 — Investment Engine](docs/chat-transcripts/transcript-phase-06-investment-engine-session.md) | Synthesis engine session — output parser, guardrails, corrective retries |
 | [Session: Phase 07 — UI Dashboard](docs/chat-transcripts/transcript-phase-07-ui-dashboard-session.md) | UI session — glassmorphic dashboard, streaming chat, build verification |
 
-### Interview Preparation
-
-| Document | Description |
-|---|---|
-| [Complete Interview Guide — 30+ Questions](docs/interview/interview-complete-guide-30-plus-questions.md) | 30+ Q&As covering architecture, LangGraph, AI engine, UI, and deployment |
-| [Interview — Phase 04: LangGraph Questions](docs/interview/interview-phase-04-langgraph-questions.md) | Why LangGraph, state management, error isolation, linear vs parallel trade-offs |
-| [Interview — Phase 05: API Layer Questions](docs/interview/interview-phase-05-api-layer-questions.md) | Middleware rationale, input validation, state isolation, status code centralization |
-| [Interview — Phase 06: Investment Engine Questions](docs/interview/interview-phase-06-investment-engine-questions.md) | LangChain rationale, output parser, retry strategy, hallucination prevention |
-| [Interview — Phase 07: UI Dashboard Questions](docs/interview/interview-phase-07-ui-dashboard-questions.md) | Progress animation, casing issues, Recharts SSR, circular meter animation, streaming |
