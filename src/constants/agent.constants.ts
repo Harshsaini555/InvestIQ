@@ -20,7 +20,6 @@ export const SUPERVISOR_TEMPERATURE = 0.0;
 export const DEFAULT_TEMPERATURE    = 0.2;
 export const SWOT_TEMPERATURE       = 0.3;
 export const SYNTHESIS_TEMPERATURE  = 0.1;
-export const CHAT_TEMPERATURE       = 0.4;
 
 /* ── LLM Token Limits ──────────────────────────────────────── */
 export const MAX_OUTPUT_TOKENS = 8192;

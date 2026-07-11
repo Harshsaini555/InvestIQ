@@ -8,9 +8,9 @@
 
 | Tier | Technology | Responsibility |
 |---|---|---|
-| Presentation | Next.js 15 App Router | UI, streaming progress, dashboard, co-pilot chat |
+| Presentation | Next.js 15 App Router | UI, streaming progress, dashboard |
 | API | Next.js Route Handlers | Request validation, middleware, response enveloping |
-| Reasoning | LangGraph + Gemini 1.5 Pro | Data collection, synthesis, guardrail validation |
+| Reasoning | LangGraph + Gemini 2.0 Flash | Data collection, synthesis, guardrail validation |
 
 ---
 
@@ -57,7 +57,7 @@ User Query (Ticker Symbol)
         InvestmentAnalysis (typed JSON)
                 │
                 ▼
-  [Interactive Dashboard] ◄──► [AI Co-Pilot] ──► POST /api/chat
+  [Interactive Dashboard]
 ```
 
 ---

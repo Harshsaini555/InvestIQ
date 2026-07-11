@@ -31,10 +31,6 @@ src/features/
         ├── risks.tsx               # Color-coded risk category matrix
         └── competitors.tsx         # Peer comparison and threat level table
 
-src/features/chat/
-└── components/
-    └── chat-panel.tsx              # Streaming AI co-pilot drawer
-
 src/components/layout/
 ├── Navbar.tsx
 └── Footer.tsx
@@ -54,7 +50,6 @@ src/app/
 | Page section fade-in | `duration: 0.6s`, cubic-bezier `[0.16, 1, 0.3, 1]` |
 | Circular score gauge | `strokeDashoffset` animated from circumference to target value |
 | Terminal log rows | Slide-in with staggered delay per row |
-| Chat drawer | Spring `stiffness: 200`, `damping: 25` |
 
 ---
 
@@ -76,7 +71,7 @@ Yahoo Finance competitor objects do not carry a native P/E ratio. Real ticker va
 - ARIA roles and labels on all interactive elements
 - Semantic HTML (`header`, `main`, `footer`, `section`, `table`)
 - Color contrast compliant with dark mode WCAG guidelines
-- Keyboard-navigable search and chat inputs
+- Keyboard-navigable search inputs
 
 ---
 

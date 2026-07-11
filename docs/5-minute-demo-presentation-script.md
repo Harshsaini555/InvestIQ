@@ -31,12 +31,12 @@
 
 ---
 
-## Part 4 — SWOT, Risks, Verdict & Co-Pilot Chat `(3:15 – 4:30)`
+## Part 4 — SWOT, Risks & Verdict `(3:15 – 4:30)`
 
-**Action:** Show the SWOT quadrants and risk matrix. Open the AI Chat sidebar and click the preset question "Why did you recommend Buy?"
+**Action:** Show the SWOT quadrants and risk matrix. Scroll to the final verdict section.
 
 **Script:**
-> "Scrolling down, we have the SWOT analysis grid and a risk matrix with severity ratings across eight standard risk categories. The final verdict highlights the core bullish and bearish cases. If I want to dig deeper, I open the AI co-pilot panel and click the suggested prompt: 'Why did you recommend Buy?' The assistant streams a response that is strictly context-bound to this report — it will never invent metrics that aren't in the data."
+> "Scrolling down, we have the SWOT analysis grid and a risk matrix with severity ratings across eight standard risk categories. The final verdict highlights the core bullish and bearish cases with growth opportunities and catalysts. Every insight is derived strictly from the data collected by the pipeline — the model is explicitly forbidden from inventing metrics."
 
 ---
 

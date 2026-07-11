@@ -18,10 +18,8 @@ src/lib/api/
 └── middleware.ts           # withApiMiddleware higher-order wrapper
 
 src/app/api/
-├── research/
-│   └── route.ts            # POST /api/research
-└── chat/
-    └── route.ts            # POST /api/chat (streaming)
+└── research/
+    └── route.ts            # POST /api/research
 ```
 
 ---

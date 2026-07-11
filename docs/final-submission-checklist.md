@@ -12,12 +12,10 @@
 | ✅ | State Annotations | `src/agent/graph/state/GraphState.ts` |
 | ✅ | Node Wrapper Helper | `src/agent/graph/helpers/node-wrapper.ts` |
 | ✅ | Research API Endpoint | `src/app/api/research/route.ts` |
-| ✅ | Streaming Chat API Endpoint | `src/app/api/chat/route.ts` |
 | ✅ | AI Synthesis Engine | `src/agent/analysis/investment-engine.ts` |
 | ✅ | Validation Guardrails | `src/agent/analysis/` |
 | ✅ | UI Dashboards | `src/app/(marketing)/` and `src/app/research/` |
 | ✅ | Visual Widgets | `src/features/` |
-| ✅ | Chat Co-Pilot | `src/features/chat/components/chat-panel.tsx` |
 
 ---
 

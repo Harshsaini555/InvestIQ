@@ -7,7 +7,6 @@ import {
   DEFAULT_TEMPERATURE,
   SWOT_TEMPERATURE,
   SYNTHESIS_TEMPERATURE,
-  CHAT_TEMPERATURE,
   MAX_OUTPUT_TOKENS,
   NODE_NAMES,
 } from '@/constants/agent.constants';
@@ -50,7 +49,6 @@ const NODE_MODEL_CONFIG: Record<string, NodeModelOverride> = {
   [NODE_NAMES.SWOT]:            { temperature: SWOT_TEMPERATURE,       maxOutputTokens: 1024 },
   [NODE_NAMES.RISK]:            { temperature: DEFAULT_TEMPERATURE,    maxOutputTokens: 1024 },
   [NODE_NAMES.SYNTHESIS]:       { temperature: SYNTHESIS_TEMPERATURE,  maxOutputTokens: 4096 },
-  chat:                         { temperature: CHAT_TEMPERATURE,       maxOutputTokens: 2048 },
 };
 
 /* ── Model Factory ─────────────────────────────────────────── */
@@ -75,20 +73,3 @@ export function createNodeModel(nodeName: string): ChatGoogleGenerativeAI {
   });
 }
 
-/**
- * Creates a streaming model instance for the chat endpoint.
- * Streaming is enabled only here — research nodes use non-streaming calls
- * because they produce structured JSON output.
- */
-export function createStreamingModel(): ChatGoogleGenerativeAI {
-  const config = NODE_MODEL_CONFIG['chat']!;
-
-  return new ChatGoogleGenerativeAI({
-    model:           env.GEMINI_MODEL_NAME,
-    apiKey:          env.GEMINI_API_KEY,
-    temperature:     config.temperature,
-    maxOutputTokens: config.maxOutputTokens,
-    safetySettings:  SAFETY_SETTINGS,
-    streaming:       true,
-  });
-}

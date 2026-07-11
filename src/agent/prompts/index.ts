@@ -37,8 +37,3 @@ export {
   buildSynthesisPrompt,
   SYNTHESIS_PROMPT_VERSION,
 } from '@/agent/prompts/synthesis.prompt';
-
-export {
-  buildChatPrompt,
-  CHAT_PROMPT_VERSION,
-} from '@/agent/prompts/chat.prompt';

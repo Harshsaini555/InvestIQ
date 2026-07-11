@@ -13,7 +13,6 @@ import { Risks } from '@/features/dashboard/components/risks';
 import { News } from '@/features/dashboard/components/news';
 import { Competitors } from '@/features/dashboard/components/competitors';
 import { Verdict } from '@/features/dashboard/components/verdict';
-import { ChatPanel } from '@/features/chat/components/chat-panel';
 import { logger } from '@/utils/logger';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -366,8 +365,6 @@ export default function ResearchWorkspace() {
               sourcesUsed={analysis.sourcesUsed}
             />
 
-            {/* Fixed AI Chat assistant co-pilot panel */}
-            <ChatPanel analysis={analysis} />
           </motion.div>
         )}
       </main>

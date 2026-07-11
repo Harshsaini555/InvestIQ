@@ -12,7 +12,6 @@ An institutional-grade, automated equity research platform. InvestIQ orchestrate
 - **Auto-Corrective Retries** — On schema failure, the exact Zod error messages are fed back to the model as a correction prompt (up to 2 retries).
 - **Analytical Guardrails** — Post-parse checks enforce score consistency, recommendation alignment, SWOT minimums, risk completeness, and summary word limits.
 - **Premium Dashboard** — Glassmorphic panels, animated SVG circular score meters, Recharts area/bar charts, and a responsive dark-mode layout.
-- **Streaming AI Co-Pilot** — Real-time follow-up chat strictly context-bound to the compiled report.
 
 ---
 
@@ -24,13 +23,45 @@ An institutional-grade, automated equity research platform. InvestIQ orchestrate
 | Language | TypeScript (Strict Mode) |
 | Styling | TailwindCSS, Tailwind Animate |
 | Orchestration | LangGraph.js, LangChain.js |
-| AI Model | Google Gemini 1.5 Pro / Flash |
+| AI Model | Google Gemini 2.0 Flash |
 | Data Sources | Yahoo Finance API, News API |
 | Validation | Zod |
 | Visualizations | Recharts |
 | Animations | Framer Motion |
 | State Management | TanStack Query v5, Zustand |
 | Testing | Vitest |
+
+---
+
+## Workflow & Interface Preview
+
+### 1. Landing Page
+![Landing Page](src/images/image1.png)
+*The clean, modern glassmorphic landing page designed for premium aesthetics, equipped with dynamic gradients and an interactive entry viewport.*
+
+### 2. Live Company Search & Filtering
+![Company Search Suggestions](src/images/image2.png)
+*Real-time autocomplete company search filtering. It performs fuzzy matching on the user input, mapping global listing details and exchange badges dynamically.*
+
+### 3. Lightweight Company Preview Card
+![Company Preview Card](src/images/image3.png)
+*Displays a real-time summary preview of the selected stock (e.g. price change tickers, 52-week slider range) along with warnings for private held companies.*
+
+### 4. Interactive LangGraph Research Pipeline
+![LangGraph Execution Pipeline Log](src/images/image4.png)
+*Visual progression track mapping step-by-step sequential node executions within the LangGraph orchestration layer.*
+
+### 5. Final Report Dashboard & Recommendations
+![Overall Assessment & Recommendation](src/images/image6.png)
+*The final consolidated report dashboard featuring financial scores, SWOT cards, analyst recommendations, and assessment confidence scores.*
+
+### 6. Historical Trajectory & Valuations
+![Stock Price Trajectory & Peer Valuations](src/images/image7.png)
+*Historical market performance line charts and relative P/E valuation benchmark comparisons mapped via Recharts.*
+
+### 7. Risk Analysis & Peer Moats
+![Risk Assessment & Moat Grid](src/images/image8.png)
+*Competitive moat assessments, risk matrices, and competitor details summarized in clean grid tables.*
 
 ---
 
@@ -68,8 +99,6 @@ graph TD
     end
 
     U -->|InvestmentAnalysis| V[Interactive Dashboard]
-    V -->|Chat Query| W[POST /api/chat]
-    W -->|Streamed Response| X[AI Co-Pilot Panel]
 ```
 
 ---
@@ -81,7 +110,6 @@ insideIIM-project/
 ├── src/
 │   ├── app/
 │   │   ├── api/
-│   │   │   ├── chat/               # Streaming chat API handler
 │   │   │   └── research/           # Graph pipeline invocation handler
 │   │   ├── (marketing)/            # Landing page layout
 │   │   ├── research/               # Dashboard workspace view
@@ -99,7 +127,6 @@ insideIIM-project/
 │   │   ├── layout/                 # Navbar, Footer
 │   │   └── shared/                 # Providers, loaders
 │   ├── features/
-│   │   ├── chat/                   # Co-pilot sidebar components
 │   │   ├── dashboard/              # Metric grids, SWOT, risks, competitors
 │   │   └── research/               # Pipeline progress tracker
 │   ├── lib/                        # API helpers, query client, validators
